@@ -7,7 +7,7 @@ from datetime import datetime
 
 env.hosts = ['18.233.62.201', '100.26.164.127']
 env.user = 'ubuntu'
-env.key_filename = '/AirBnb_clone_v2/my_key'
+env.key_filename = '~/.ssh/my_key'
 
 
 def do_pack():
