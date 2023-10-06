@@ -14,6 +14,7 @@ env.key_filename = '/AirBnB_clone_v2/my_key'
 # Define the IP addresses of your web servers
 env.hosts = ['18.233.62.201', '100.26.164.127']
 
+
 def do_pack():
     """
     Create a compressed archive of the web_static folder.
@@ -33,6 +34,7 @@ def do_pack():
         return archive_path
     except Exception as e:
         return None
+
 
 def do_deploy(archive_path):
     """
@@ -78,6 +80,7 @@ def do_deploy(archive_path):
         return True
     except Exception as e:
         return False
+
 
 def deploy():
     """

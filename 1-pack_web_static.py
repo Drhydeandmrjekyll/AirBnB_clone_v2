@@ -5,6 +5,7 @@ from fabric.api import local
 from datetime import datetime
 import os
 
+
 def do_pack():
     "Create a .tgz archieve from webstatic folder."""
     try:
