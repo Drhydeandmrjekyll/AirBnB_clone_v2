@@ -27,7 +27,11 @@ def do_clean(number=0):
 
     archives_dir = "/data/web_static/releases"
     with lcd("versions"):
-        local("ls -1t | tail -n +{} | xargs -I {{}} rm -f {{}}".format(number + 1))
+        local_command = "ls -1t | tail -n +{} | xargs -I {{}} rm -f {{}}"
+        local_command = local_command.format(number + 1)
+        local(local_command)
 
     with cd(archives_dir):
-        run("ls -1t | tail -n +{} | xargs -I {{}} rm -rf {{}}".format(number + 1))
+        remote_command = "ls -1t | tail -n +{} | xargs -I {{}} rm -rf {{}}"
+        remote_command = remote_command.format(number + 1)
+        run(remote_command)
