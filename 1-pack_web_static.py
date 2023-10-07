@@ -7,19 +7,30 @@ import os
 
 
 def do_pack():
-    "Create a .tgz archieve from webstatic folder."""
+    """Create a .tgz archive from the web_static folder."""
     try:
         current_time = datetime.now().strftime("%Y%m%d%H%M%S")
         archive_name = "versions/web_static_{}.tgz".format(current_time)
-        web_static_path = "/home/ubuntu/AirBnB_clone_v2/web_static"
+        web_static_path = "web_static"
 
-        if not os.path.exists("versions"):
-            os.mkdir("versions")
+        if not os.path.exists(web_static_path):
+            print("Error: 'web_static' folder does not exist.")
+            return None
 
-        local("tar -czvf {} {}".format(archive_name, web_static_path))
+        local("mkdir -p versions")
 
-        if os.path.exists(archive_name):
+        result = local("tar -czvf {} {}".format(archive_name, web_static_path))
+
+        if result.succeeded:
             return archive_name
+        else:
+            print("Error: Failed to create the archive.")
+            return None
 
     except Exception as e:
+        print("Error:", str(e))
         return None
+
+
+if __name__ == "__main__":
+    do_pack()
