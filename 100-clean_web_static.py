@@ -34,4 +34,4 @@ def do_clean(number=0):
     with cd(archives_dir):
         remote_command = "ls -1t | tail -n +{} | xargs -I {{}} rm -rf {{}}"
         remote_command = remote_command.format(number + 1)
-	run(remote_command)
+        run(remote_command)

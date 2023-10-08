@@ -22,7 +22,10 @@ def do_pack():
         result = local("tar -czvf {} {}".format(archive_name, web_static_path))
 
         if result.succeeded:
-            print("web_static packed: {} -> {}Bytes".format(archive_name, os.path.getsize(archive_name)))
+            file_size = os.path.getsize(archive_name)
+            message = ("web_static packed: {} -> {}Bytes"
+                       .format(archive_name, file_size))
+            print(message)
             return archive_name
         else:
             print("Error: Failed to create the archive.")
