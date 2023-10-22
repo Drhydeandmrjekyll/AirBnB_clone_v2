@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>100-hbnb</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/3-footer.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/3-header.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/4-common.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/6-filters.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/8-places.css') }}">
+</head>
+<body>
+    <div class="filter">
+        <h2 class="title">States</h2>
+        <ul class="filter-list">
+            {% for state in states %}
+                <li>{{ state.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="filter">
+        <h2 class="title">Cities</h2>
+        <ul class="filter-list">
+            {% for city in cities %}
+                <li>{{ city.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="filter">
+        <h2 class="title">Amenities</h2>
+        <ul class="filter-list">
+            {% for amenity in amenities %}
+                <li>{{ amenity.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="places">
+        <h1 class="title">Places</h1>
+        <ul class="places-list">
+            {% for place in places %}
+                <li>
+                    <img src="{{ place.image }}" alt="{{ place.name }}">
+                    <h2 class="place-name">{{ place.name }}</h2>
+                    <p class="place-description">{{ place.description }}</p>
+                    <p class="place-price">${{ place.price_by_night }} per night</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
